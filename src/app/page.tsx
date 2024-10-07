@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <main >
       <div>
-        <h1>Welcome to Home Page</h1>
+      <p style={{ textAlign: 'justify' }}>Welcome to Home Page </p>
       </div>
     </main>
   );

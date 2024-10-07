@@ -124,5 +124,8 @@ body::before {
   background-color: #DECAB7;
   border-radius: 10px;
 }
-
+.text-shadow {
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
 }
