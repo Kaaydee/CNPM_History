@@ -1,5 +1,7 @@
 'use client'
-import TableHis from "@/app/(forStudent)/Lichsu/Histable"
+
+import PrintHistory from "@/app/(forStudent)/Lichsu/Histable";
+
 // import { Button } from "@/components/ui/button"
 // import { useRouter } from "next/navigation"
 
@@ -10,9 +12,7 @@ const Lichsu =()=>{
     //    router.push("/")
     // }
     return (
-        <div>
-            <TableHis></TableHis>
-      </div>
+       <PrintHistory></PrintHistory>
     )
 }
 export default Lichsu;
