@@ -34,12 +34,12 @@ export function DatePickerDemo() {
           <Button
             variant={"outline"}
             className={ cn(
-             "w-[150px] justify-center text-blue-500 font-extrabold italic text-left hover:via-cyan-700",
+             "w-36 justify-center text-blue-500 font-extrabold italic text-left hover:via-cyan-700",
               !date && "text-muted-foreground"
             )}
             onClick={() => setIsPopoverOpen(true)}
           >
-            {date ? format(date, "dd/MM/yyyy", { locale: vi }) : <span>Chọn ngày</span>}
+            {date ? format(date, "dd/MM/yyyy", { locale: vi }) : <span>Tất cả</span>}
           </Button>
         </div>
       </PopoverTrigger>
