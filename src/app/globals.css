@@ -124,5 +124,28 @@ body::before {
   background-color: #DECAB7;
   border-radius: 10px;
 }
+.text-shadow {
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+.sticky-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0; 
+  z-index: 40;
+  background-color:  #A4C4DC; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  padding: 10px 0; 
+}
+
+.ItemHover {
+  color: black;     
+  cursor: pointer; 
+  transition: color 0.1s; 
+}
+
+.ItemHover:hover {
+  color: blue; 
+}
 
 }
