@@ -11,11 +11,15 @@ class LogService {
     }
  
     async getLogByStudentId(studentID) {
-        return await Log.findOne({
+        return await Log.findAll({
             where: {
                 studentID: studentID,
             },
         });
+    }
+
+    async getAllLogs() {
+        return await Log.findAll();
     }
 
     async updateLog(id, updates) {

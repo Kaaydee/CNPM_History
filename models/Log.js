@@ -4,15 +4,18 @@ const sequelize = require("../config/mysql.database");
 const Log = sequelize.define(
     "Log",
     {
+        logID: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+        },
         studentID: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true, // Mark as part of the composite primary key
         },
         printerID: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            primaryKey: true, // Mark as part of the composite primary key
         },
         filename: {
             type: DataTypes.STRING,
@@ -33,7 +36,7 @@ const Log = sequelize.define(
     },
     {
         tableName: "print_log",
-        timestamps: true, // This will automatically manage createdAt and updatedAt fields
+        timestamps: true, // Tự động quản lý createdAt và updatedAt
     }
 );
 

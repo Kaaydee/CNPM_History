@@ -3,6 +3,7 @@ const logController = require("../controllers/logController");
 const router = Router();
 
 router.post("/", logController.createLog);
+router.get("/", logController.getAllLogs);
 router.get("/:studentID", logController.getLog);
 router.put("/:studentID", logController.updateLog);
 
