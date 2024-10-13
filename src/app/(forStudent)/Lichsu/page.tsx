@@ -10,7 +10,7 @@ const Lichsu =()=>{
   const fetcher = (url:string)=>fetch(url).then((res)=>res.json());
   
   const {data, error,isLoading}=useSWR(
-    "http://localhost:8000/blogs",fetcher, {
+    "http://localhost:3000/logs/1",fetcher, {
       revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false

@@ -1,16 +1,20 @@
 import { DatePickerDemo } from '@/app/(forStudent)/Lichsu/H_component/setDate';
 import React, { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa6';
-interface IBlog {
-  id: number;
-  title: string;
-  date: string;
-  time: string;
-}
 
+// interface IBlog{
+//   studentID: number;
+//   printerID: number;
+//   filename: string;
+//   startPrintTime: string;
+//   endPrintTime: string;
+//   numberOfPage: number;
+//   createdAt: string; 
+//   updatedAt: string;
+// }
 interface SelectProps {
   data: IBlog[]; // Nhận dữ liệu từ component cha
-  onFilter: (filteredData: IBlog[]) => void; // Callback để trả kết quả lọc về cha
+  onFilter: (filteredData: IBlog[]) => void;
 }
 
 export default function Select({ data, onFilter }: SelectProps) {
@@ -33,7 +37,7 @@ export default function Select({ data, onFilter }: SelectProps) {
     } else if(option==="Chọn ngày"){
       setSelectedDate(new Date());
       const filteredData = data.filter(item => {
-        const itemDate = new Date(item.date);
+        const itemDate = new Date(item.startPrintTime);
         return itemDate.toDateString() === (new Date()).toDateString(); // Lọc dữ liệu theo ngày hiện tại
       });
       onFilter(filteredData);
@@ -46,7 +50,7 @@ export default function Select({ data, onFilter }: SelectProps) {
 
     // Lọc dữ liệu theo ngày đã chọn và trả về cha
     const filteredData = data.filter(item => {
-      const itemDate = new Date(item.date);
+      const itemDate = new Date(item.startPrintDate);
       return itemDate.toDateString() === date.toDateString();
     });
     onFilter(filteredData); // Gọi callback với dữ liệu đã lọc

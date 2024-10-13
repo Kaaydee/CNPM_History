@@ -85,13 +85,23 @@ interface PrintHis {
   blog: IBlog[]; // IBlog định nghĩa cấu trúc của blog
 }
 
+
 const PrintHistory = (props: PrintHis) => {
   const { blog } = props;
   const [visibleCount, setVisibleCount] = useState(9);
   const [isExpanded, setIsExpanded] = useState(false);
   const [filteredBlog, setFilteredBlog] = useState(blog); // Lưu danh sách được lọc
   const [selectedItem, setSelectedItem] = useState<IBlog | null>(null); // Lưu item được chọn để hiển thị chi tiết
-
+  
+  //set format day
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    const year = date.getFullYear().toString().slice(-2); // Lấy 2 chữ số cuối của năm
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Tháng bắt đầu từ 0, thêm 1 và đảm bảo có 2 chữ số
+    const day = date.getDate().toString().padStart(2, '0'); // Đảm bảo có 2 chữ số
+  
+    return `${year}-${month}-${day}`; // Trả về định dạng YY/mm/dd
+  };
   // Hàm xử lý khi chọn "Tất cả" hoặc "Chọn ngày"
   const handleFilter = (filteredData: IBlog[]) => {
     setFilteredBlog(filteredData); // Cập nhật danh sách sau khi lọc
@@ -131,23 +141,23 @@ const PrintHistory = (props: PrintHis) => {
             <Select data={blog} onFilter={handleFilter} />
           </ul>
         </div>
-        <div className="overflow-x-auto"> 
+        <div className="overflow-x-auto overflow-y-auto"> 
           {filteredBlog.length === 0 ? ( // Kiểm tra nếu không có dữ liệu sau khi lọc
             <div className="p-4 text-center text-red-600">
               Không có tài liệu
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-2">
-              {filteredBlog.slice(0, visibleCount).map((item) => (
+              {filteredBlog.slice(0, visibleCount).map((item)=> (
                 <div 
-                  key={item.id} 
-                  className=" border-gray-300 rounded-lg p-4 shadow-md cursor-pointer bg-white navbarLi"
+                  key={item.studentID} 
+                  className=" border-gray-300 rounded-lg p-4 shadow-md cursor-pointer bg-white navbarLi w-auto h-full"
                   onClick={() => handleItemClick(item)}
                 >
-                  <h3 className="font-semibold text-lg mb-2 text-blue-600">{item.date}</h3>
-                  <p className="text-black font-bold truncate w-auto max-w-xs" title={item.title}>{item.title}</p>
-                  <p className="text-gray-600">Thời gian: {item.time}</p>
-                  <p className="text-gray-600">Vị trí: H6-M1</p>
+                  <h3 className="font-semibold text-lg mb-2 text-blue-600">{item.startPrintDate}</h3>
+                  <p className="text-black font-bold truncate w-auto max-w-xs" title={item.filename}>{item.filename}</p>
+                  <p className="text-gray-600">Thời gian: {item.startPrintTime}</p>
+                  <p className="text-gray-600">Vị trí: H6-M{item.printerID}</p>
                 </div>
               ))}
             </div>
